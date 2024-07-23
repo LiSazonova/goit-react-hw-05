@@ -16,3 +16,14 @@ export const getTrending = async () => {
 
     return response.data;
 };
+
+export const searchMovies = async (query) => {
+    const params = {
+        query,
+        include_adult: false,
+        language: 'en-US',
+        page: 1,
+    };
+    const response = await axios.get('/search/movie', { ...options, params });
+    return response.data.results;
+};
