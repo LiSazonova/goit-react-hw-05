@@ -19,10 +19,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Trending Movies</h1>
       <MovieList movies={movies} />
-    </div>
+    </main>
   );
 };
 

@@ -7,6 +7,7 @@ import {
   useParams,
 } from 'react-router-dom';
 import { fetchMovieDetails } from '../../api/api';
+import s from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -32,26 +33,43 @@ const MovieDetailsPage = () => {
 
   return (
     <main>
-      <button type="button" onClick={() => navigate(previousLocation.current)}>
+      <button
+        className={s.backBtn}
+        type="button"
+        onClick={() => navigate(previousLocation.current)}
+      >
         {' '}
         Go back
       </button>
       <div>
-        <h1>{movie.original_title}</h1>
+        <h1 className={s.titleWrapper}>{movie.original_title}</h1>
       </div>
-      <div>
+      <div className={s.imgWrapper}>
         <img
+          className={s.imgMovie}
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.original_title}
         />
-        <p>{movie.overview}</p>
+        <p className={s.movieDescr}>{movie.overview}</p>
       </div>
-      <ul>
+      <ul className={s.navBarCastReviews}>
         <li>
-          <Link to={'cast'}>Cast</Link>
+          <Link
+            className={s.linkNavBar}
+            to={'cast'}
+            state={{ from: previousLocation.current }}
+          >
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to={'reviews'}>Reviews</Link>
+          <Link
+            className={s.linkNavBar}
+            to={'reviews'}
+            state={{ from: previousLocation.current }}
+          >
+            Reviews
+          </Link>
         </li>
         <Outlet />
       </ul>

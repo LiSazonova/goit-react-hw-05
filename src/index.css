@@ -5,6 +5,8 @@ body {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     line-height: 1.5;
+
+    scroll-behavior: smooth;
 }
 
 h1,
@@ -37,4 +39,8 @@ img {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+main {
+    padding: 20px;
 }

@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+        gap: 20px;
+        justify-content: center;
+}
+
+.input {
+        background-color: transparent;
+            border: 1px solid orange;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+}
+.input:hover,
+.input:active,
+.input:focus {
+    border: 2px solid orange;
+}
+
+input::placeholder {
+    color: darkgray;
+}
+.btn {padding: 8px 12px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: medium;
+    background-color: transparent;
+    color: white;
+    border: 1px solid orange;
+    transition: all cubic-bezier(0.2);
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    border: 1px solid white;
+    color: orange;
+}

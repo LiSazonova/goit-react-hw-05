@@ -1,0 +1,20 @@
+.container {
+    display: grid;
+        grid-template-columns: repeat(auto-fit, 200px);
+        gap: 16px;
+        margin: 50px;
+}
+
+.cardWrapper {
+    border: 1px solid rgb(255 165 0 / 30%);
+        border-radius: 4px;
+        background-color: rgb(238 237 237 / 35%);
+}
+
+.movieName {
+    padding: 6px;
+        margin-top: 8px;
+        margin-bottom: 0;
+        color: #000;
+        text-align: center;
+}
