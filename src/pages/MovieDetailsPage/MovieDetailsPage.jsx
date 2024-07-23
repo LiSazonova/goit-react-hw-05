@@ -29,7 +29,21 @@ const MovieDetailsPage = () => {
     getMovieDetails();
   }, [movieId]);
 
-  if (!movie) return <p>Loading...</p>;
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [location]);
+
+  if (!movie) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <main>
@@ -56,7 +70,7 @@ const MovieDetailsPage = () => {
         <li>
           <Link
             className={s.linkNavBar}
-            to={'cast'}
+            to={`/movies/${movieId}/cast`}
             state={{ from: previousLocation.current }}
           >
             Cast
@@ -65,14 +79,19 @@ const MovieDetailsPage = () => {
         <li>
           <Link
             className={s.linkNavBar}
-            to={'reviews'}
+            to={`/movies/${movieId}/reviews`}
             state={{ from: previousLocation.current }}
           >
             Reviews
           </Link>
         </li>
-        <Outlet />
       </ul>
+      <div id="cast">
+        <Outlet />
+      </div>
+      <div id="reviews">
+        <Outlet />
+      </div>
     </main>
   );
 };
