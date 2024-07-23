@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
+  const location = useLocation();
+
   return (
     <ul>
       {movies.map(movie => (

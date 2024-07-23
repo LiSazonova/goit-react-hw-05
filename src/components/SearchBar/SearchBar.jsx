@@ -1,4 +1,4 @@
-const SearchBar = ({ query, onSubmit }) => {
+const SearchBar = ({ query, onSubmit, error }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -10,6 +10,7 @@ const SearchBar = ({ query, onSubmit }) => {
         />
         <button type="submit">Search</button>
       </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 };

@@ -3,12 +3,14 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { searchMovies } from '../../api/api';
 import { useSearchParams } from 'react-router-dom';
 import MovieList from '../../components/MovieList/MovieList';
+import toast from 'react-hot-toast';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [noMovies, setNoMovies] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (query) {
@@ -18,7 +20,7 @@ const MoviesPage = () => {
           setMovies(data);
           setNoMovies(true);
         } catch (error) {
-          console.error('Error searching movies:', error);
+          toast.error('Error searching movies:', error);
         }
       };
 
@@ -30,13 +32,21 @@ const MoviesPage = () => {
     event.preventDefault();
     const form = event.target;
     const newQuery = form.elements.query.value.trim();
+
+    if (newQuery === '') {
+      setError('Please, enter something');
+      return;
+    }
+
+    setError('');
+
     setSearchParams({ query: newQuery });
     setNoMovies(false);
   };
 
   return (
     <main>
-      <SearchBar query={query} onSubmit={handleSubmit} />
+      <SearchBar query={query} onSubmit={handleSubmit} error={error} />
       {movies.length > 0 ? (
         <MovieList movies={movies} />
       ) : (

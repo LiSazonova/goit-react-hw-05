@@ -1,10 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { fetchMovieDetails } from '../../api/api';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const previousLocation = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -23,7 +32,10 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <button type="button"> Go back</button>
+      <button type="button" onClick={() => navigate(previousLocation.current)}>
+        {' '}
+        Go back
+      </button>
       <div>
         <h1>{movie.original_title}</h1>
       </div>
