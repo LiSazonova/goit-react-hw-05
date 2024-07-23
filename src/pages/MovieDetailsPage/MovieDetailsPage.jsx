@@ -31,7 +31,7 @@ const MovieDetailsPage = () => {
   if (!movie) return <p>Loading...</p>;
 
   return (
-    <div>
+    <main>
       <button type="button" onClick={() => navigate(previousLocation.current)}>
         {' '}
         Go back
@@ -55,7 +55,7 @@ const MovieDetailsPage = () => {
         </li>
         <Outlet />
       </ul>
-    </div>
+    </main>
   );
 };
 

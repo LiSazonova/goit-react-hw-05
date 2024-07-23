@@ -3,7 +3,6 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { searchMovies } from '../../api/api';
 import { useSearchParams } from 'react-router-dom';
 import MovieList from '../../components/MovieList/MovieList';
-import toast from 'react-hot-toast';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +19,7 @@ const MoviesPage = () => {
           setMovies(data);
           setNoMovies(true);
         } catch (error) {
-          toast.error('Error searching movies:', error);
+          console.error('Error searching movies:', error);
         }
       };
 
