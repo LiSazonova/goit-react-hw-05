@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const MovieDetailsPage = () => {
   return (
@@ -9,6 +9,7 @@ const MovieDetailsPage = () => {
       <li>
         <Link to={'reviews'}>Reviews</Link>
       </li>
+      <Outlet />
     </ul>
   );
 };
