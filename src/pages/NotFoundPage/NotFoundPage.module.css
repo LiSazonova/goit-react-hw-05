@@ -1,0 +1,18 @@
+.title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.linkHome {
+    padding: 8px 12px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-weight: 500;
+        font-size: medium;
+        background-color: transparent;
+        color: white;
+        border: 1px solid orange;
+        transition: border 200ms ease-out;
+        margin-left: 20px;
+}
