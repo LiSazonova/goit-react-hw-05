@@ -10,8 +10,11 @@
     border: 1px solid rgb(255 165 0 / 30%);
         border-radius: 4px;
         background-color: rgb(238 237 237 / 35%);
+        transition: transform 200ms ease-out;
 }
-
+.cardWrapper:hover {
+    transform: scale(1.03);
+}
 .movieName {
     padding: 6px;
         color: #000;
