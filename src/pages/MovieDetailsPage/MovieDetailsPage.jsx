@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import {
   Link,
   Outlet,
@@ -29,21 +29,7 @@ const MovieDetailsPage = () => {
     getMovieDetails();
   }, [movieId]);
 
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }, [location]);
-
-  if (!movie) {
-    return <p>Loading...</p>;
-  }
+  if (!movie) return <p>Loading...</p>;
 
   return (
     <main>
@@ -70,7 +56,7 @@ const MovieDetailsPage = () => {
         <li>
           <Link
             className={s.linkNavBar}
-            to={`/movies/${movieId}/cast`}
+            to={'cast'}
             state={{ from: previousLocation.current }}
           >
             Cast
@@ -79,19 +65,16 @@ const MovieDetailsPage = () => {
         <li>
           <Link
             className={s.linkNavBar}
-            to={`/movies/${movieId}/reviews`}
+            to={'reviews'}
             state={{ from: previousLocation.current }}
           >
             Reviews
           </Link>
         </li>
       </ul>
-      <div id="cast">
+      <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
-      </div>
-      <div id="reviews">
-        <Outlet />
-      </div>
+      </Suspense>
     </main>
   );
 };

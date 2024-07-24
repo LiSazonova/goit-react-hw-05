@@ -21,7 +21,7 @@ const MovieReviews = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={s.container}>
       {reviews.length > 0 ? (
         <ul>
           {reviews.map(review => (

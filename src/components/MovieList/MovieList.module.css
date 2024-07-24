@@ -1,8 +1,9 @@
 .container {
     display: grid;
-        grid-template-columns: repeat(auto-fit, 200px);
+        grid-template-columns: repeat(auto-fit, 250px);
         gap: 16px;
-        margin: 50px;
+        padding: 40px;
+        justify-content: center;
 }
 
 .cardWrapper {
@@ -13,8 +14,10 @@
 
 .movieName {
     padding: 6px;
-        margin-top: 8px;
-        margin-bottom: 0;
         color: #000;
         text-align: center;
+}
+
+.movieImg {
+    width: 250px;
 }
